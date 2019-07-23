@@ -1,0 +1,32 @@
+CREATE VIEW   -- VISTA STOCK DATAGRIDVIEW FOR UPDATE WITH BARCODE --
+VISTA_STOCK_CODE AS 
+SELECT  S.ID_STOCK,(SELECT NOMBRE_PROVEEDOR AS PROVEEDOR FROM PROVEEDOR WHERE ID_PROVEEDOR = M.ID_PROVEEDOR),N.NOMBRE_MARCA,M.DESCRIPCION, (SELECT NOMBRE_COLOR AS COLOR FROM COLOR WHERE ID_COLOR = S.ID_COLOR),(SELECT DESCRIPCION_TALLA AS TALLA FROM TALLA WHERE ID_TALLA = S.ID_TALLA), S.CANTIDAD_STOCK,S.MINIMO_STOCK,S.PRECIO_COMPRA_STOCK,P.PORCENTAJE_IMPUESTO,S.MARGEN_UTILIDAD,S.PRECIO_VENTA_STOCK, S.FECHA_INGRESO_STOCK, M.ID_MERCADERIA FROM MERCADERIA M   
+INNER JOIN STOCK S
+ON M.ID_MERCADERIA = S.ID_MERCADERIA
+INNER JOIN MARCA N
+ON N.ID_MARCA = M.ID_MARCA
+INNER JOIN IMPUESTO P 
+ON S.ID_IMPUESTO = P.ID_IMPUESTO
+WHERE M.ESTADO_TUPLA = TRUE AND S.ESTADO_TUPLA = TRUE; 
+
+
+
+for(int i = 0; i < dataGridView1.RowCount; i++)
+                    {
+                        dataGridView1.Rows[i].Cells[3].Value = Math.Truncate(Convert.ToDouble(textBox3.Text) / Convert.ToDouble(dataGridView1.Rows[i].Cells[2].Value));
+               
+
+  private bool getRepetitive (string presentacion)
+        {
+            if (dataGridView1.Rows.Count > 0)
+            {
+                for (int i = 0; i <= dataGridView1.RowCount - 1; i++)
+                {
+                    if (dataGridView1.Rows[i].Cells[1].Value.ToString() == presentacion)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }     }
