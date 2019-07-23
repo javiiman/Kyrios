@@ -785,5 +785,10 @@ namespace ASG
         {
 
         }
+
+        private void frm_facturas_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
